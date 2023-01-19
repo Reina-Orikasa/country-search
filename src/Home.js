@@ -1,18 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
 export function Home() {
-  const [countryData, setCountryData] = useState("");
+  const [country, setCountry] = useState('Japan');
+  const [countryData, setCountryData] = useState('');
+  const [countryPhoto, setCountryPhoto] = useState('');
   async function fetchCountry() {
     const response = await fetch(
-      "https://restcountries.com/v2/name/switzerland?fields=name,capital,region,population"
+      `https://restcountries.com/v2/name/${country}?fields=name,capital,region,population`
     );
     const json = await response.json();
     setCountryData(json[0]);
   }
 
+  async function fetchPhoto() {
+    const response = await fetch(
+      `/.netlify/functions/auth-fetch?country=${country}`
+    );
+    const json = await response.json();
+    if (json.results[0].urls.regular !== 0) {
+      setCountryPhoto(json.results[0].urls.regular);
+    }
+  }
+
+  function adjustCountry(event) {
+    setCountry(event.target.value);
+  }
+
   useEffect(() => {
     fetchCountry();
-  }, []);
+    fetchPhoto();
+  }, [country]);
 
   return (
     <div>
@@ -37,13 +54,25 @@ export function Home() {
         </div>
       </div>
       <div className="py-4 text-center text-white h-full">
+        <h3>Popular countries this week:</h3>
+        <div className="mb-2">
+          <button className="mr-2" onClick={adjustCountry} value="USA">
+            USA
+          </button>
+          <button className="mr-2" onClick={adjustCountry} value="Japan">
+            Japan
+          </button>
+          <button className="mr-2" onClick={adjustCountry} value="Ukraine">
+            Ukraine
+          </button>
+          <button onClick={adjustCountry} value="Taiwan">
+            Taiwan
+          </button>
+        </div>
         <h3 className="text-4xl font-light">Featured Country</h3>
-        <h2 className="text-6xl font-bold mb-4">Switzerland</h2>
+        <h2 className="text-6xl font-bold mb-4">{country}</h2>
         <div className="flex justify-center align-middle bg-2">
-          <img
-            className="rounded-xl w-2/3"
-            src="https://images.unsplash.com/photo-1521292270410-a8c4d716d518?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-          />
+          <img className="rounded-xl w-2/3" src={countryPhoto} />
         </div>
 
         <h2 className="text-6xl font-semibold mt-4">Quick Facts</h2>

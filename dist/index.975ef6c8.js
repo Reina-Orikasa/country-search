@@ -27187,15 +27187,28 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _s = $RefreshSig$();
 function Home() {
     _s();
+    const [country, setCountry] = (0, _react.useState)("Japan");
     const [countryData, setCountryData] = (0, _react.useState)("");
+    const [countryPhoto, setCountryPhoto] = (0, _react.useState)("");
     async function fetchCountry() {
-        const response = await fetch("https://restcountries.com/v2/name/switzerland?fields=name,capital,region,population");
+        const response = await fetch(`https://restcountries.com/v2/name/${country}?fields=name,capital,region,population`);
         const json = await response.json();
         setCountryData(json[0]);
     }
+    async function fetchPhoto() {
+        const response = await fetch(`/.netlify/functions/auth-fetch?country=${country}`);
+        const json = await response.json();
+        if (json.results[0].urls.regular !== 0) setCountryPhoto(json.results[0].urls.regular);
+    }
+    function adjustCountry(event) {
+        setCountry(event.target.value);
+    }
     (0, _react.useEffect)(()=>{
         fetchCountry();
-    }, []);
+        fetchPhoto();
+    }, [
+        country
+    ]);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27211,7 +27224,7 @@ function Home() {
                                     children: "Welcome"
                                 }, void 0, false, {
                                     fileName: "src/Home.js",
-                                    lineNumber: 22,
+                                    lineNumber: 39,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
@@ -27219,7 +27232,7 @@ function Home() {
                                     children: "This is WorldInfo"
                                 }, void 0, false, {
                                     fileName: "src/Home.js",
-                                    lineNumber: 23,
+                                    lineNumber: 40,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
@@ -27228,14 +27241,14 @@ function Home() {
                                         "The world is vast and ready to be explored. ",
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                             fileName: "src/Home.js",
-                                            lineNumber: 25,
+                                            lineNumber: 42,
                                             columnNumber: 59
                                         }, this),
                                         " Where will you go?"
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/Home.js",
-                                    lineNumber: 24,
+                                    lineNumber: 41,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27243,13 +27256,13 @@ function Home() {
                                     children: "Explore Now"
                                 }, void 0, false, {
                                     fileName: "src/Home.js",
-                                    lineNumber: 28,
+                                    lineNumber: 45,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/Home.js",
-                            lineNumber: 21,
+                            lineNumber: 38,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
@@ -27257,52 +27270,107 @@ function Home() {
                             src: "https://images.unsplash.com/photo-1673901736622-c3f06b08511f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2074&q=80"
                         }, void 0, false, {
                             fileName: "src/Home.js",
-                            lineNumber: 33,
+                            lineNumber: 50,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/Home.js",
-                    lineNumber: 20,
+                    lineNumber: 37,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "src/Home.js",
-                lineNumber: 19,
+                lineNumber: 36,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "py-4 text-center text-white h-full",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                        children: "Popular countries this week:"
+                    }, void 0, false, {
+                        fileName: "src/Home.js",
+                        lineNumber: 57,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "mb-2",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                className: "mr-2",
+                                onClick: adjustCountry,
+                                value: "USA",
+                                children: "USA"
+                            }, void 0, false, {
+                                fileName: "src/Home.js",
+                                lineNumber: 59,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                className: "mr-2",
+                                onClick: adjustCountry,
+                                value: "Japan",
+                                children: "Japan"
+                            }, void 0, false, {
+                                fileName: "src/Home.js",
+                                lineNumber: 62,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                className: "mr-2",
+                                onClick: adjustCountry,
+                                value: "Ukraine",
+                                children: "Ukraine"
+                            }, void 0, false, {
+                                fileName: "src/Home.js",
+                                lineNumber: 65,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                onClick: adjustCountry,
+                                value: "Taiwan",
+                                children: "Taiwan"
+                            }, void 0, false, {
+                                fileName: "src/Home.js",
+                                lineNumber: 68,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/Home.js",
+                        lineNumber: 58,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                         className: "text-4xl font-light",
                         children: "Featured Country"
                     }, void 0, false, {
                         fileName: "src/Home.js",
-                        lineNumber: 40,
+                        lineNumber: 72,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                         className: "text-6xl font-bold mb-4",
-                        children: "Switzerland"
+                        children: country
                     }, void 0, false, {
                         fileName: "src/Home.js",
-                        lineNumber: 41,
+                        lineNumber: 73,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                         className: "flex justify-center align-middle bg-2",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                             className: "rounded-xl w-2/3",
-                            src: "https://images.unsplash.com/photo-1521292270410-a8c4d716d518?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+                            src: countryPhoto
                         }, void 0, false, {
                             fileName: "src/Home.js",
-                            lineNumber: 43,
+                            lineNumber: 75,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "src/Home.js",
-                        lineNumber: 42,
+                        lineNumber: 74,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
@@ -27310,7 +27378,7 @@ function Home() {
                         children: "Quick Facts"
                     }, void 0, false, {
                         fileName: "src/Home.js",
-                        lineNumber: 49,
+                        lineNumber: 78,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
@@ -27321,7 +27389,7 @@ function Home() {
                         ]
                     }, void 0, true, {
                         fileName: "src/Home.js",
-                        lineNumber: 50,
+                        lineNumber: 79,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
@@ -27332,7 +27400,7 @@ function Home() {
                         ]
                     }, void 0, true, {
                         fileName: "src/Home.js",
-                        lineNumber: 51,
+                        lineNumber: 80,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
@@ -27343,23 +27411,23 @@ function Home() {
                         ]
                     }, void 0, true, {
                         fileName: "src/Home.js",
-                        lineNumber: 52,
+                        lineNumber: 81,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/Home.js",
-                lineNumber: 39,
+                lineNumber: 56,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/Home.js",
-        lineNumber: 18,
+        lineNumber: 35,
         columnNumber: 5
     }, this);
 }
-_s(Home, "xSpZNYl2ilaW26ueYoGfQ2+vx0w=");
+_s(Home, "/u+qPlcCRVKAZxzSwZar9kpbv9k=");
 _c = Home;
 var _c;
 $RefreshReg$(_c, "Home");
