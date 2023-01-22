@@ -143,8 +143,8 @@
     }
   }
 })({"1xC6H":[function(require,module,exports) {
-var Refresh = require("9c8f6d6cb0567223");
-var ErrorOverlay = require("93768ac16869c2d9");
+var Refresh = require("19c2ce63d542a594");
+var ErrorOverlay = require("40afaa85e68ceb18");
 Refresh.injectIntoGlobalHook(window);
 window.$RefreshReg$ = function() {};
 window.$RefreshSig$ = function() {
@@ -163,11 +163,11 @@ window.addEventListener("parcelhmraccept", ()=>{
     ErrorOverlay.dismissRuntimeErrors();
 });
 
-},{"9c8f6d6cb0567223":"786KC","93768ac16869c2d9":"1dldy"}],"786KC":[function(require,module,exports) {
+},{"19c2ce63d542a594":"786KC","40afaa85e68ceb18":"1dldy"}],"786KC":[function(require,module,exports) {
 "use strict";
-module.exports = require("8b209a8fe17c90c3");
+module.exports = require("48ab1a8b6a81808e");
 
-},{"8b209a8fe17c90c3":"hdge7"}],"hdge7":[function(require,module,exports) {
+},{"48ab1a8b6a81808e":"hdge7"}],"hdge7":[function(require,module,exports) {
 /** @license React v0.9.0
  * react-refresh-runtime.development.js
  *
@@ -628,7 +628,7 @@ module.exports = require("8b209a8fe17c90c3");
 })();
 
 },{}],"1dldy":[function(require,module,exports) {
-var process = require("4f38888561604a57");
+var process = require("47d387a65ccd403");
 !function(e, t) {
     module.exports = t();
 }(window, function() {
@@ -2358,7 +2358,7 @@ var process = require("4f38888561604a57");
     ]);
 });
 
-},{"4f38888561604a57":"d5jf4"}],"d5jf4":[function(require,module,exports) {
+},{"47d387a65ccd403":"d5jf4"}],"d5jf4":[function(require,module,exports) {
 // shim for using process in browser
 var process = module.exports = {};
 // cached from whatever global is present so that test runners that stub it
@@ -2503,7 +2503,7 @@ process.umask = function() {
     return 0;
 };
 
-},{}],"hnNSs":[function(require,module,exports) {
+},{}],"jC2qd":[function(require,module,exports) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
@@ -2943,9 +2943,9 @@ root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _app.App), {}, void 0, 
 }
 },{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","./App":"2kQhy","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iTorj":[function(require,module,exports) {
 "use strict";
-module.exports = require("6633a7bf004ebecb");
+module.exports = require("be035d2e92ce221d");
 
-},{"6633a7bf004ebecb":"48uCM"}],"48uCM":[function(require,module,exports) {
+},{"be035d2e92ce221d":"48uCM"}],"48uCM":[function(require,module,exports) {
 /**
  * @license React
  * react-jsx-dev-runtime.development.js
@@ -2957,7 +2957,7 @@ module.exports = require("6633a7bf004ebecb");
  */ "use strict";
 (function() {
     "use strict";
-    var React = require("f381e88123e5c719");
+    var React = require("70fae2dd8b22587c");
     // ATTENTION
     // When adding new symbols to this file,
     // Please consider also adding to 'react-devtools-shared/src/backend/ReactSymbols'
@@ -3776,11 +3776,11 @@ module.exports = require("6633a7bf004ebecb");
     exports.jsxDEV = jsxDEV$1;
 })();
 
-},{"f381e88123e5c719":"21dqq"}],"21dqq":[function(require,module,exports) {
+},{"70fae2dd8b22587c":"21dqq"}],"21dqq":[function(require,module,exports) {
 "use strict";
-module.exports = require("20db77ba83129713");
+module.exports = require("25c74ec45ec4f8f8");
 
-},{"20db77ba83129713":"6YvXz"}],"6YvXz":[function(require,module,exports) {
+},{"25c74ec45ec4f8f8":"6YvXz"}],"6YvXz":[function(require,module,exports) {
 /**
  * @license React
  * react.development.js
@@ -5648,7 +5648,7 @@ module.exports = require("20db77ba83129713");
 
 },{}],"lOjBx":[function(require,module,exports) {
 "use strict";
-var m = require("eabe951ba63313f");
+var m = require("94d0defa143e7819");
 var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
 exports.createRoot = function(c, o) {
     i.usingClientEntryPoint = true;
@@ -5667,7 +5667,7 @@ exports.hydrateRoot = function(c, h, o) {
     }
 };
 
-},{"eabe951ba63313f":"j6uA9"}],"j6uA9":[function(require,module,exports) {
+},{"94d0defa143e7819":"j6uA9"}],"j6uA9":[function(require,module,exports) {
 "use strict";
 function checkDCE() {
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === "undefined" || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== "function") return;
@@ -5681,9 +5681,9 @@ function checkDCE() {
     // a false positive.
     throw new Error("^_^");
 }
-module.exports = require("82e82b90ae450a5e");
+module.exports = require("cfa7ea2922a26d47");
 
-},{"82e82b90ae450a5e":"3iA9v"}],"3iA9v":[function(require,module,exports) {
+},{"cfa7ea2922a26d47":"3iA9v"}],"3iA9v":[function(require,module,exports) {
 /**
  * @license React
  * react-dom.development.js
@@ -5696,8 +5696,8 @@ module.exports = require("82e82b90ae450a5e");
 (function() {
     "use strict";
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
-    var React = require("97465cbe95f0706c");
-    var Scheduler = require("ac17f162428b48d7");
+    var React = require("5f77a47bb7047a41");
+    var Scheduler = require("1095f4959a7f2565");
     var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
     var suppressWarning = false;
     function setSuppressWarning(newSuppressWarning) {
@@ -26668,11 +26668,11 @@ module.exports = require("82e82b90ae450a5e");
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
 })();
 
-},{"97465cbe95f0706c":"21dqq","ac17f162428b48d7":"juvHo"}],"juvHo":[function(require,module,exports) {
+},{"5f77a47bb7047a41":"21dqq","1095f4959a7f2565":"juvHo"}],"juvHo":[function(require,module,exports) {
 "use strict";
-module.exports = require("be0630a14f69e2d7");
+module.exports = require("9a8b8ed1bb041808");
 
-},{"be0630a14f69e2d7":"RqdIf"}],"RqdIf":[function(require,module,exports) {
+},{"9a8b8ed1bb041808":"RqdIf"}],"RqdIf":[function(require,module,exports) {
 /**
  * @license React
  * scheduler.development.js
@@ -27295,7 +27295,7 @@ function Home() {
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "py-4 text-center text-white",
+                className: "py-4 text-center text-white bg-1",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                         children: "Popular countries this week:"
@@ -27305,10 +27305,10 @@ function Home() {
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "mb-2",
+                        className: "mb-2 font-semibold",
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                className: "mr-2",
+                                className: "mr-2 hover:underline",
                                 onClick: adjustCountry,
                                 value: "USA",
                                 children: "United States"
@@ -27318,32 +27318,67 @@ function Home() {
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                className: "mr-2",
+                                className: "mr-2 hover:underline",
                                 onClick: adjustCountry,
                                 value: "Japan",
                                 children: "Japan"
                             }, void 0, false, {
                                 fileName: "src/Home.js",
-                                lineNumber: 67,
+                                lineNumber: 71,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                className: "mr-2",
+                                className: "mr-2 hover:underline",
                                 onClick: adjustCountry,
                                 value: "Ukraine",
                                 children: "Ukraine"
                             }, void 0, false, {
                                 fileName: "src/Home.js",
-                                lineNumber: 70,
+                                lineNumber: 78,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                className: "mr-2 hover:underline",
                                 onClick: adjustCountry,
                                 value: "Taiwan",
                                 children: "Taiwan"
                             }, void 0, false, {
                                 fileName: "src/Home.js",
-                                lineNumber: 73,
+                                lineNumber: 85,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                className: "hover:underline",
+                                onClick: adjustCountry,
+                                value: "Chile",
+                                children: "Chile"
+                            }, void 0, false, {
+                                fileName: "src/Home.js",
+                                lineNumber: 92,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                        className: "mt-4",
+                                        children: "Search your own"
+                                    }, void 0, false, {
+                                        fileName: "src/Home.js",
+                                        lineNumber: 101,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                        defaultValue: country,
+                                        className: "rounded-xl text-black p-4 text-center"
+                                    }, void 0, false, {
+                                        fileName: "src/Home.js",
+                                        lineNumber: 102,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/Home.js",
+                                lineNumber: 100,
                                 columnNumber: 11
                             }, this)
                         ]
@@ -27353,14 +27388,14 @@ function Home() {
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "bg-1 py-4",
+                        className: "py-4",
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                                 className: "text-4xl font-light",
                                 children: "Featured Country"
                             }, void 0, false, {
                                 fileName: "src/Home.js",
-                                lineNumber: 78,
+                                lineNumber: 109,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
@@ -27368,92 +27403,102 @@ function Home() {
                                 children: country
                             }, void 0, false, {
                                 fileName: "src/Home.js",
-                                lineNumber: 79,
+                                lineNumber: 110,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                 className: "flex justify-center align-middle",
                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                                    className: "rounded-xl w-2/3",
+                                    className: "rounded-xl w-7/12",
                                     src: countryPhoto
                                 }, void 0, false, {
                                     fileName: "src/Home.js",
-                                    lineNumber: 81,
+                                    lineNumber: 112,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "src/Home.js",
-                                lineNumber: 80,
+                                lineNumber: 111,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/Home.js",
-                        lineNumber: 77,
+                        lineNumber: 108,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                         className: "mb-4",
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                                className: "text-6xl font-semibold mt-4",
+                                className: "text-6xl font-semibold my-4",
                                 children: "Quick Facts"
                             }, void 0, false, {
                                 fileName: "src/Home.js",
-                                lineNumber: 85,
+                                lineNumber: 116,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                                className: "text-4xl",
+                                className: "text-4xl font-bold mb-2",
                                 children: [
-                                    "Region: ",
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                        className: "font-light",
+                                        children: "Region:"
+                                    }, void 0, false, {
+                                        fileName: "src/Home.js",
+                                        lineNumber: 118,
+                                        columnNumber: 13
+                                    }, this),
+                                    " ",
                                     countryData.region
                                 ]
                             }, void 0, true, {
                                 fileName: "src/Home.js",
-                                lineNumber: 86,
+                                lineNumber: 117,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                                className: "text-4xl",
+                                className: "text-4xl mb-2 font-bold",
                                 children: [
-                                    "Capital: ",
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                        className: "font-light",
+                                        children: "Capital:"
+                                    }, void 0, false, {
+                                        fileName: "src/Home.js",
+                                        lineNumber: 121,
+                                        columnNumber: 13
+                                    }, this),
+                                    " ",
                                     countryData.capital
                                 ]
                             }, void 0, true, {
                                 fileName: "src/Home.js",
-                                lineNumber: 87,
+                                lineNumber: 120,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                                className: "text-4xl",
+                                className: "text-4xl font-bold",
                                 children: [
-                                    "Population: ",
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                        className: "font-light",
+                                        children: "Population:"
+                                    }, void 0, false, {
+                                        fileName: "src/Home.js",
+                                        lineNumber: 124,
+                                        columnNumber: 13
+                                    }, this),
+                                    " ",
                                     countryData.population
                                 ]
                             }, void 0, true, {
                                 fileName: "src/Home.js",
-                                lineNumber: 88,
+                                lineNumber: 123,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/Home.js",
-                        lineNumber: 84,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                            className: "text-6xl",
-                            children: "Search for a country"
-                        }, void 0, false, {
-                            fileName: "src/Home.js",
-                            lineNumber: 91,
-                            columnNumber: 11
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "src/Home.js",
-                        lineNumber: 90,
+                        lineNumber: 115,
                         columnNumber: 9
                     }, this)
                 ]
@@ -27469,7 +27514,7 @@ function Home() {
         columnNumber: 5
     }, this);
 }
-_s(Home, "vP2T3X6fmkIcLLszWegC1zTVHow=");
+_s(Home, "/u+qPlcCRVKAZxzSwZar9kpbv9k=");
 _c = Home;
 var _c;
 $RefreshReg$(_c, "Home");
@@ -27511,7 +27556,7 @@ exports.export = function(dest, destName, get) {
 
 },{}],"km3Ru":[function(require,module,exports) {
 "use strict";
-var Refresh = require("641734819b24b0ab");
+var Refresh = require("b4a2c69e2089abe3");
 function debounce(func, delay) {
     {
         let timeout = undefined;
@@ -27642,7 +27687,7 @@ function registerExportsForReactRefresh(module1) {
     }
 }
 
-},{"641734819b24b0ab":"786KC"}],"hvQ18":[function(require,module,exports) {
+},{"b4a2c69e2089abe3":"786KC"}],"hvQ18":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$7507 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27695,6 +27740,6 @@ $RefreshReg$(_c, "Nav");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}]},["1xC6H","hnNSs","8lqZg"], "8lqZg", "parcelRequirea6d7")
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}]},["1xC6H","jC2qd","8lqZg"], "8lqZg", "parcelRequirea6d7")
 
 //# sourceMappingURL=index.975ef6c8.js.map

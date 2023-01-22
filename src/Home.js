@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
 export function Home() {
-  const [country, setCountry] = useState("Japan");
-  const [countryData, setCountryData] = useState("");
-  const [countryPhoto, setCountryPhoto] = useState("");
+  const [country, setCountry] = useState('Japan');
+  const [countryData, setCountryData] = useState('');
+  const [countryPhoto, setCountryPhoto] = useState('');
 
   // sets data on current country in state
   async function fetchCountry() {
@@ -58,37 +58,72 @@ export function Home() {
           </div>
         </div>
       </div>
-      <div className="py-4 text-center text-white">
+      <div className="py-4 text-center text-white bg-1">
         <h3>Popular countries this week:</h3>
-        <div className="mb-2">
-          <button className="mr-2" onClick={adjustCountry} value="USA">
+        <div className="mb-2 font-semibold">
+          <button
+            className="mr-2 hover:underline"
+            onClick={adjustCountry}
+            value="USA"
+          >
             United States
           </button>
-          <button className="mr-2" onClick={adjustCountry} value="Japan">
+          <button
+            className="mr-2 hover:underline"
+            onClick={adjustCountry}
+            value="Japan"
+          >
             Japan
           </button>
-          <button className="mr-2" onClick={adjustCountry} value="Ukraine">
+          <button
+            className="mr-2 hover:underline"
+            onClick={adjustCountry}
+            value="Ukraine"
+          >
             Ukraine
           </button>
-          <button onClick={adjustCountry} value="Taiwan">
+          <button
+            className="mr-2 hover:underline"
+            onClick={adjustCountry}
+            value="Taiwan"
+          >
             Taiwan
           </button>
+          <button
+            className="hover:underline"
+            onClick={adjustCountry}
+            value="Chile"
+          >
+            Chile
+          </button>
+
+          <label>
+            <h3 className="mt-4">Search your own</h3>
+            <input
+              defaultValue={country}
+              className="rounded-xl text-black p-4 text-center"
+            ></input>
+          </label>
         </div>
-        <div className="bg-1 py-4">
+        <div className="py-4">
           <h3 className="text-4xl font-light">Featured Country</h3>
           <h2 className="text-6xl font-bold mb-4">{country}</h2>
           <div className="flex justify-center align-middle">
-            <img className="rounded-xl w-2/3" src={countryPhoto} />
+            <img className="rounded-xl w-7/12" src={countryPhoto} />
           </div>
         </div>
         <div className="mb-4">
-          <h2 className="text-6xl font-semibold mt-4">Quick Facts</h2>
-          <h3 className="text-4xl">Region: {countryData.region}</h3>
-          <h3 className="text-4xl">Capital: {countryData.capital}</h3>
-          <h3 className="text-4xl">Population: {countryData.population}</h3>
-        </div>
-        <div>
-          <h2 className="text-6xl">Search for a country</h2>
+          <h2 className="text-6xl font-semibold my-4">Quick Facts</h2>
+          <h3 className="text-4xl font-bold mb-2">
+            <span className="font-light">Region:</span> {countryData.region}
+          </h3>
+          <h3 className="text-4xl mb-2 font-bold">
+            <span className="font-light">Capital:</span> {countryData.capital}
+          </h3>
+          <h3 className="text-4xl font-bold">
+            <span className="font-light">Population:</span>{' '}
+            {countryData.population}
+          </h3>
         </div>
       </div>
     </div>
