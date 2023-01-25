@@ -1,9 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 export function Home() {
-  const [country, setCountry] = useState('Japan');
-  const [countryData, setCountryData] = useState('');
-  const [countryPhoto, setCountryPhoto] = useState('');
+  const [country, setCountry] = useState("Japan");
+  const [countryData, setCountryData] = useState("");
+  const [countryPhoto, setCountryPhoto] = useState("");
+  const [countrySearch, setCountrySearch] = useState("");
+
+  // restricts search parameters because of the Unsplash API Limit
+  const acceptedCountries = [
+    "Australia",
+    "Argentina",
+    "China",
+    "Germany",
+    "Botswana",
+    "Lithuania",
+  ];
 
   // sets data on current country in state
   async function fetchCountry() {
@@ -28,6 +39,15 @@ export function Home() {
 
   function adjustCountry(event) {
     setCountry(event.target.value);
+  }
+
+  function searchCountry() {
+    const countrySearchUppercase = `${countrySearch[0].toUpperCase()}${countrySearch.slice(
+      1
+    )}`;
+    if (acceptedCountries.includes(countrySearchUppercase)) {
+      setCountry(countrySearchUppercase);
+    }
   }
 
   useEffect(() => {
@@ -59,51 +79,67 @@ export function Home() {
         </div>
       </div>
       <div className="py-4 text-center text-white bg-1">
-        <h3>Popular countries this week:</h3>
-        <div className="mb-2 font-semibold">
-          <button
-            className="mr-2 hover:underline"
-            onClick={adjustCountry}
-            value="USA"
-          >
-            United States
-          </button>
-          <button
-            className="mr-2 hover:underline"
-            onClick={adjustCountry}
-            value="Japan"
-          >
-            Japan
-          </button>
-          <button
-            className="mr-2 hover:underline"
-            onClick={adjustCountry}
-            value="Ukraine"
-          >
-            Ukraine
-          </button>
-          <button
-            className="mr-2 hover:underline"
-            onClick={adjustCountry}
-            value="Taiwan"
-          >
-            Taiwan
-          </button>
-          <button
-            className="hover:underline"
-            onClick={adjustCountry}
-            value="Chile"
-          >
-            Chile
-          </button>
+        <div>
+          <h3>Popular countries this week:</h3>
+          <div className="mb-2 font-semibold">
+            <button
+              className="mr-2 hover:underline"
+              onClick={adjustCountry}
+              value="USA"
+            >
+              United States
+            </button>
+            <button
+              className="mr-2 hover:underline"
+              onClick={adjustCountry}
+              value="Japan"
+            >
+              Japan
+            </button>
+            <button
+              className="mr-2 hover:underline"
+              onClick={adjustCountry}
+              value="Ukraine"
+            >
+              Ukraine
+            </button>
+            <button
+              className="mr-2 hover:underline"
+              onClick={adjustCountry}
+              value="Taiwan"
+            >
+              Taiwan
+            </button>
+            <button
+              className="hover:underline"
+              onClick={adjustCountry}
+              value="Chile"
+            >
+              Chile
+            </button>
+          </div>
 
           <label>
-            <h3 className="mt-4">Search your own</h3>
+            <h2 className="my-4 text-6xl font-bold">Search your own</h2>
+            <h5 className="font-light text-xl">
+              Disclaimer: due to Unsplash API limits, search queries are
+              restricted to the following:
+            </h5>
+            <h5 className="mb-4 font-bold text-xl">
+              Australia, Argentina, China, Germany, Botswana, and Lithuania.
+            </h5>
             <input
-              defaultValue={country}
+              value={countrySearch}
               className="rounded-xl text-black p-4 text-center"
+              onChange={(e) => setCountrySearch(e.target.value)}
             ></input>
           </label>
+          <button
+            className="border-2 border-white rounded-xl p-2 ml-4"
+            onClick={searchCountry}
+          >
+            Search
+          </button>
         </div>
         <div className="py-4">
           <h3 className="text-4xl font-light">Featured Country</h3>
@@ -121,7 +157,7 @@ export function Home() {
             <span className="font-light">Capital:</span> {countryData.capital}
           </h3>
           <h3 className="text-4xl font-bold">
-            <span className="font-light">Population:</span>{' '}
+            <span className="font-light">Population:</span>{" "}
             {countryData.population}
           </h3>
         </div>
