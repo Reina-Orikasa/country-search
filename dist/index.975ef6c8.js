@@ -27143,7 +27143,7 @@ var _home = require("./Home");
 var _nav = require("./Nav");
 function App() {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "dark:bg-gray-800 text-white",
+        className: "dark:bg-gray-800 dark:text-white",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _nav.Nav), {}, void 0, false, {
                 fileName: "src/App.js",
@@ -27197,14 +27197,36 @@ function Home() {
         "Argentina",
         "China",
         "Germany",
+        "India",
         "Botswana",
-        "Lithuania"
+        "Lithuania",
+        "New Zealand",
+        "South Korea"
+    ];
+    const randomList = [
+        "Hong Kong",
+        "Hungary",
+        "Iceland",
+        "India",
+        "Indonesia",
+        "Luxembourg",
+        "Macau",
+        "Malaysia",
+        "Madagascar",
+        "New Zealand",
+        "Namibia",
+        "Kenya",
+        "Nepal",
+        "Netherlands",
+        "Vietnam"
     ];
     // sets data on current country in state
     async function fetchCountry() {
-        const response = await fetch(`https://restcountries.com/v2/name/${country}?fields=name,capital,region,population`);
+        const response = await fetch(`https://restcountries.com/v3.1/name/${country}?fullText=true?fields=name,capital,region,population`);
         const json = await response.json();
-        setCountryData(json[0]);
+        json.forEach((countryItem)=>{
+            if (countryItem.name.common === country) setCountryData(countryItem);
+        });
     }
     // grabs photo url via Netlify Functions
     // uses country stored in state as query parameter
@@ -27217,8 +27239,19 @@ function Home() {
         setCountry(event.target.value);
     }
     function searchCountry() {
-        const countrySearchUppercase = `${countrySearch[0].toUpperCase()}${countrySearch.slice(1)}`;
-        if (acceptedCountries.includes(countrySearchUppercase)) setCountry(countrySearchUppercase);
+        const captializedCountrySearch = countrySearch.split(/ /g).map((word)=>`${word.substring(0, 1).toUpperCase()}${word.substring(1)}`).join(" ");
+        if (acceptedCountries.includes(captializedCountrySearch)) {
+            setCountry(captializedCountrySearch);
+            setCountrySearch("");
+        }
+    }
+    function searchOnEnter(event) {
+        if (event.key === "Enter") searchCountry();
+    }
+    function searchRandom() {
+        let randomCountry = randomList[Math.floor(Math.random() * randomList.length)];
+        if (randomCountry === country) randomCountry = randomList[Math.floor(Math.random() * randomList.length)];
+        setCountry(randomList[Math.floor(Math.random() * randomList.length)]);
     }
     (0, _react.useEffect)(()=>{
         fetchCountry();
@@ -27229,7 +27262,7 @@ function Home() {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "text-center bg-2 py-4 mb-6",
+                className: "text-center text-white bg-gray-700 py-4 mb-6",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                     className: "md:grid md:grid-cols-2 md:gap-2",
                     children: [
@@ -27237,79 +27270,79 @@ function Home() {
                             className: "",
                             children: [
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                                    className: "text-8xl mt-4 font-bold",
+                                    className: "text-6xl md:text-8xl mt-4 font-bold",
                                     children: "Welcome"
                                 }, void 0, false, {
                                     fileName: "src/Home.js",
-                                    lineNumber: 63,
+                                    lineNumber: 108,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                                    className: "text-6xl font-semibold mb-6",
+                                    className: "text-4xl md:text-6xl font-semibold mb-6",
                                     children: "This is WorldInfo"
                                 }, void 0, false, {
                                     fileName: "src/Home.js",
-                                    lineNumber: 64,
+                                    lineNumber: 109,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
-                                    className: "text-2xl font-semibold",
+                                    className: "text-xl md:text-2xl font-semibold mb-4",
                                     children: [
                                         "The world is vast and ready to be explored. ",
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                             fileName: "src/Home.js",
-                                            lineNumber: 66,
+                                            lineNumber: 113,
                                             columnNumber: 59
                                         }, this),
                                         " Where will you go?"
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/Home.js",
-                                    lineNumber: 65,
+                                    lineNumber: 112,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                    className: "border-2 border-white p-4 rounded-xl mt-4",
+                                    className: "border-2 border-white p-4 rounded-xl mt-4 mb-4 md:mb-0",
                                     children: "Explore Now"
                                 }, void 0, false, {
                                     fileName: "src/Home.js",
-                                    lineNumber: 69,
+                                    lineNumber: 116,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/Home.js",
-                            lineNumber: 62,
+                            lineNumber: 107,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "",
+                            className: "flex justify-center align-middle",
                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                                className: "rounded-xl pr-24",
+                                className: "rounded-xl w-10/12 md:w-11/12",
                                 src: "https://images.unsplash.com/photo-1673901736622-c3f06b08511f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2074&q=80"
                             }, void 0, false, {
                                 fileName: "src/Home.js",
-                                lineNumber: 74,
+                                lineNumber: 121,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "src/Home.js",
-                            lineNumber: 73,
+                            lineNumber: 120,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/Home.js",
-                    lineNumber: 61,
+                    lineNumber: 106,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "src/Home.js",
-                lineNumber: 60,
+                lineNumber: 105,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "py-4 text-center text-white bg-1",
+                className: "py-4 text-center dark:text-white bg-1",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                         children: [
@@ -27317,7 +27350,7 @@ function Home() {
                                 children: "Popular countries this week:"
                             }, void 0, false, {
                                 fileName: "src/Home.js",
-                                lineNumber: 83,
+                                lineNumber: 130,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27326,11 +27359,11 @@ function Home() {
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                                         className: "mr-2 hover:underline",
                                         onClick: adjustCountry,
-                                        value: "USA",
+                                        value: "United States",
                                         children: "United States"
                                     }, void 0, false, {
                                         fileName: "src/Home.js",
-                                        lineNumber: 85,
+                                        lineNumber: 132,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27340,7 +27373,7 @@ function Home() {
                                         children: "Japan"
                                     }, void 0, false, {
                                         fileName: "src/Home.js",
-                                        lineNumber: 92,
+                                        lineNumber: 139,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27350,7 +27383,7 @@ function Home() {
                                         children: "Ukraine"
                                     }, void 0, false, {
                                         fileName: "src/Home.js",
-                                        lineNumber: 99,
+                                        lineNumber: 146,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27360,7 +27393,7 @@ function Home() {
                                         children: "Taiwan"
                                     }, void 0, false, {
                                         fileName: "src/Home.js",
-                                        lineNumber: 106,
+                                        lineNumber: 153,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27370,195 +27403,220 @@ function Home() {
                                         children: "Chile"
                                     }, void 0, false, {
                                         fileName: "src/Home.js",
-                                        lineNumber: 113,
+                                        lineNumber: 160,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/Home.js",
-                                lineNumber: 84,
+                                lineNumber: 131,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                className: "",
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                                        className: "my-4 text-6xl font-bold",
+                                        className: "my-4 text-4xl md:text-6xl font-bold",
                                         children: "Search your own"
                                     }, void 0, false, {
                                         fileName: "src/Home.js",
-                                        lineNumber: 123,
+                                        lineNumber: 170,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h5", {
-                                        className: "font-light text-xl",
+                                        className: "font-light text-lg md:text-xl",
                                         children: "Disclaimer: due to Unsplash API limits, search queries are restricted to the following:"
                                     }, void 0, false, {
                                         fileName: "src/Home.js",
-                                        lineNumber: 124,
+                                        lineNumber: 173,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h5", {
-                                        className: "mb-4 font-bold text-xl",
-                                        children: "Australia, Argentina, China, Germany, Botswana, and Lithuania."
+                                        className: "mb-4 font-bold text-lg md:text-xl px-2",
+                                        children: "Australia, Argentina, Botswana, China, Germany, Lithuania, and South Korea."
                                     }, void 0, false, {
                                         fileName: "src/Home.js",
-                                        lineNumber: 128,
+                                        lineNumber: 177,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                                         value: countrySearch,
-                                        className: "rounded-xl text-black p-4 text-center",
-                                        onChange: (e)=>setCountrySearch(e.target.value)
+                                        className: "rounded-lg text-black p-4 text-center shadow-lg shadow-sky-500/40",
+                                        onChange: (e)=>setCountrySearch(e.target.value),
+                                        onKeyDown: searchOnEnter
                                     }, void 0, false, {
                                         fileName: "src/Home.js",
-                                        lineNumber: 131,
+                                        lineNumber: 181,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/Home.js",
-                                lineNumber: 122,
+                                lineNumber: 169,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                className: "border-2 border-white rounded-xl p-2 ml-4",
+                                className: "border-2 border-black bg-sky-600 rounded-xl p-2 ml-4 text-2xl font-bold",
                                 onClick: searchCountry,
                                 children: "Search"
                             }, void 0, false, {
                                 fileName: "src/Home.js",
-                                lineNumber: 137,
+                                lineNumber: 188,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                className: "border-2 border-black bg-sky-600 rounded-xl p-2 mt-4 md:mt-0 ml-4 inline-block text-2xl font-bold",
+                                onClick: searchRandom,
+                                children: "Feeling Lucky"
+                            }, void 0, false, {
+                                fileName: "src/Home.js",
+                                lineNumber: 195,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/Home.js",
-                        lineNumber: 82,
+                        lineNumber: 129,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "py-4",
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                                className: "text-4xl font-light",
-                                children: "Featured Country"
+                        className: "pt-8",
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            className: "flex justify-center align-middle",
+                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                                className: "rounded-xl w-10/12 md:w-8/12",
+                                src: countryPhoto
                             }, void 0, false, {
                                 fileName: "src/Home.js",
-                                lineNumber: 145,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                                className: "text-6xl font-bold mb-4",
-                                children: country
-                            }, void 0, false, {
-                                fileName: "src/Home.js",
-                                lineNumber: 146,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "flex justify-center align-middle",
-                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                                    className: "rounded-xl w-7/12",
-                                    src: countryPhoto
+                                lineNumber: 205,
+                                columnNumber: 13
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "src/Home.js",
+                            lineNumber: 204,
+                            columnNumber: 11
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "src/Home.js",
+                        lineNumber: 203,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "flex justify-center align-middle md:-mt-20 -mt-10 mb-8",
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            className: "bg-sky-100 text-sky-700 md:p-6 py-6 px-20 rounded-xl border-1 border-sky-200 space-y-8",
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                                    className: "text-4xl md:text-6xl font-bold",
+                                    children: country
                                 }, void 0, false, {
                                     fileName: "src/Home.js",
-                                    lineNumber: 148,
+                                    lineNumber: 214,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "md:flex md:justify-center md:align-middle md:space-x-16",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                            className: "text-3xl md:text-4xl mb-2 font-semibold",
+                                            children: [
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                    className: "font-light",
+                                                    children: "Capital"
+                                                }, void 0, false, {
+                                                    fileName: "src/Home.js",
+                                                    lineNumber: 217,
+                                                    columnNumber: 17
+                                                }, this),
+                                                " ",
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                                                    fileName: "src/Home.js",
+                                                    lineNumber: 217,
+                                                    columnNumber: 61
+                                                }, this),
+                                                countryData.capital
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/Home.js",
+                                            lineNumber: 216,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                            className: "text-3xl md:text-4xl mb-2 font-semibold",
+                                            children: [
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                    className: "font-light",
+                                                    children: "Population"
+                                                }, void 0, false, {
+                                                    fileName: "src/Home.js",
+                                                    lineNumber: 221,
+                                                    columnNumber: 17
+                                                }, this),
+                                                " ",
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                                                    fileName: "src/Home.js",
+                                                    lineNumber: 221,
+                                                    columnNumber: 64
+                                                }, this),
+                                                countryData.population
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/Home.js",
+                                            lineNumber: 220,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                            className: "text-3xl md:text-4xl font-semibold mb-2",
+                                            children: [
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                    className: "font-light",
+                                                    children: "Region"
+                                                }, void 0, false, {
+                                                    fileName: "src/Home.js",
+                                                    lineNumber: 225,
+                                                    columnNumber: 17
+                                                }, this),
+                                                " ",
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                                                    fileName: "src/Home.js",
+                                                    lineNumber: 225,
+                                                    columnNumber: 60
+                                                }, this),
+                                                " ",
+                                                countryData.region
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/Home.js",
+                                            lineNumber: 224,
+                                            columnNumber: 15
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/Home.js",
+                                    lineNumber: 215,
                                     columnNumber: 13
                                 }, this)
-                            }, void 0, false, {
-                                fileName: "src/Home.js",
-                                lineNumber: 147,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/Home.js",
+                            lineNumber: 209,
+                            columnNumber: 11
+                        }, this)
+                    }, void 0, false, {
                         fileName: "src/Home.js",
-                        lineNumber: 144,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "mb-4",
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                                className: "text-6xl font-semibold my-4",
-                                children: "Quick Facts"
-                            }, void 0, false, {
-                                fileName: "src/Home.js",
-                                lineNumber: 152,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                                className: "text-4xl font-bold mb-2",
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                        className: "font-light",
-                                        children: "Region:"
-                                    }, void 0, false, {
-                                        fileName: "src/Home.js",
-                                        lineNumber: 154,
-                                        columnNumber: 13
-                                    }, this),
-                                    " ",
-                                    countryData.region
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/Home.js",
-                                lineNumber: 153,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                                className: "text-4xl mb-2 font-bold",
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                        className: "font-light",
-                                        children: "Capital:"
-                                    }, void 0, false, {
-                                        fileName: "src/Home.js",
-                                        lineNumber: 157,
-                                        columnNumber: 13
-                                    }, this),
-                                    " ",
-                                    countryData.capital
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/Home.js",
-                                lineNumber: 156,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                                className: "text-4xl font-bold",
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                        className: "font-light",
-                                        children: "Population:"
-                                    }, void 0, false, {
-                                        fileName: "src/Home.js",
-                                        lineNumber: 160,
-                                        columnNumber: 13
-                                    }, this),
-                                    " ",
-                                    countryData.population
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/Home.js",
-                                lineNumber: 159,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/Home.js",
-                        lineNumber: 151,
+                        lineNumber: 208,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/Home.js",
-                lineNumber: 81,
+                lineNumber: 128,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/Home.js",
-        lineNumber: 59,
+        lineNumber: 104,
         columnNumber: 5
     }, this);
 }
@@ -27753,6 +27811,7 @@ function Nav() {
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "flex gap-2 text-2xl",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                    className: "text-2xl font-bold",
                     children: "WorldInfo"
                 }, void 0, false, {
                     fileName: "src/Nav.js",
