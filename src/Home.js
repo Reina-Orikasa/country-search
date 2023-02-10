@@ -1,13 +1,27 @@
 import React, { useEffect, useState } from "react";
+import Select from "react-select";
 
 export function Home() {
   const [country, setCountry] = useState("Japan");
   const [countryData, setCountryData] = useState("");
   const [countryPhoto, setCountryPhoto] = useState("");
   const [countrySearch, setCountrySearch] = useState("");
+  const wikiVoyageURL = `https://en.wikivoyage.org/wiki/${country}`;
 
   // restricts search parameters because of the Unsplash API Limit
   const acceptedCountries = [
+    { value: "Australia", label: "Australia" },
+    { value: "Argentina", label: "Argentina" },
+    { value: "China", label: "China" },
+    { value: "Germany", label: "Germany" },
+    { value: "India", label: "India" },
+    { value: "Botswana", label: "Botswana" },
+    { value: "Lithuania", label: "Lithuania" },
+    { value: "Mexico", label: "Mexico" },
+    { value: "Norway", label: "Norway" },
+  ];
+
+  const acceptedCountriesArr = [
     "Australia",
     "Argentina",
     "China",
@@ -15,8 +29,8 @@ export function Home() {
     "India",
     "Botswana",
     "Lithuania",
-    "New Zealand",
-    "South Korea",
+    "Mexico",
+    "Norway",
   ];
 
   const randomList = [
@@ -59,7 +73,7 @@ export function Home() {
     );
     const json = await response.json();
     if (json.results[0].urls.regular !== 0) {
-      setCountryPhoto(json.results[8].urls.regular);
+      setCountryPhoto(json.results[0].urls.regular);
     }
   }
 
@@ -74,8 +88,9 @@ export function Home() {
         (word) => `${word.substring(0, 1).toUpperCase()}${word.substring(1)}`
       )
       .join(" ");
-    if (acceptedCountries.includes(captializedCountrySearch)) {
+    if (acceptedCountriesArr.includes(captializedCountrySearch)) {
       setCountry(captializedCountrySearch);
+      console.log(captializedCountrySearch);
       setCountrySearch("");
     }
   }
@@ -90,15 +105,17 @@ export function Home() {
     let randomCountry =
       randomList[Math.floor(Math.random() * randomList.length)];
     if (randomCountry === country) {
+      console.log(randomCountry, country);
       randomCountry = randomList[Math.floor(Math.random() * randomList.length)];
+      console.log(randomCountry, country);
     }
-    setCountry(randomList[Math.floor(Math.random() * randomList.length)]);
+    setCountry(randomCountry);
   }
 
   useEffect(() => {
     fetchCountry();
     fetchPhoto();
-  }, [country]);
+  }, [country, countrySearch]);
 
   return (
     <div>
@@ -107,19 +124,20 @@ export function Home() {
           <div className="">
             <h1 className="text-6xl md:text-8xl mt-4 font-bold">Welcome</h1>
             <h2 className="text-4xl md:text-6xl font-semibold mb-6">
-              This is WorldInfo
+              to <span className="text-blue-500">World</span><span className="text-lime-500">Info</span>
             </h2>
-            <h4 className="text-xl md:text-2xl font-semibold mb-4">
+            <h3 className="text-xl md:text-2xl font-semibold mb-4">
               The world is vast and ready to be explored. <br /> Where will you
               go?
-            </h4>
-            <button className="border-2 border-white p-4 rounded-xl mt-4 mb-4 md:mb-0">
-              Explore Now
+            </h3>
+            <button className="border-2 border-sky-500 p-4 rounded-xl mt-4 mb-4 md:mb-0 hover:bg-sky-400">
+              <a href="#search">Explore Now</a>
             </button>
           </div>
           <div className="flex justify-center align-middle">
             <img
               className="rounded-xl w-10/12 md:w-11/12"
+              alt="Featured photo of Switzerland winter"
               src="https://images.unsplash.com/photo-1673901736622-c3f06b08511f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2074&q=80"
             />
           </div>
@@ -166,24 +184,29 @@ export function Home() {
             </button>
           </div>
 
-          <label className="">
+          <label id="search">
             <h2 className="my-4 text-4xl md:text-6xl font-bold">
-              Search your own
+              Explore
             </h2>
-            <h5 className="font-light text-lg md:text-xl">
+            <h3 className="font-light text-lg md:text-xl mb-2">
               Disclaimer: due to Unsplash API limits, search queries are
-              restricted to the following:
-            </h5>
-            <h5 className="mb-4 font-bold text-lg md:text-xl px-2">
-              Australia, Argentina, Botswana, China, Germany, Lithuania, and
-              South Korea.
-            </h5>
-            <input
+              restricted.
+            </h3>
+            {/* <input
               value={countrySearch}
               className="rounded-lg text-black p-4 text-center shadow-lg shadow-sky-500/40"
               onChange={(e) => setCountrySearch(e.target.value)}
               onKeyDown={searchOnEnter}
-            ></input>
+            ></input> */}
+            <div className="flex justify-center align-middle mb-4">
+              <Select
+                options={acceptedCountries}
+                onChange={(e) => setCountrySearch(e.value)}
+                onKeyDown={searchOnEnter}
+                className="text-black w-1/2"
+                isSearchable={false}
+              />
+            </div>
           </label>
           <button
             className="border-2 border-black bg-sky-600 rounded-xl 
@@ -197,35 +220,50 @@ export function Home() {
                         p-2 mt-4 md:mt-0 ml-4 inline-block text-2xl font-bold"
             onClick={searchRandom}
           >
-            Feeling Lucky
+            Random
           </button>
         </div>
         <div className="pt-8">
           <div className="flex justify-center align-middle">
-            <img className="rounded-xl w-10/12 md:w-8/12" src={countryPhoto} />
+            <img
+              className="rounded-xl md:w-8/12"
+              src={countryPhoto}
+              alt={"photo of " + country}
+              loading="lazy"
+            ></img>
           </div>
         </div>
         <div className="flex justify-center align-middle md:-mt-20 -mt-10 mb-8">
           <div
             className="bg-sky-100 text-sky-700
-                          md:p-6 py-6 px-20 rounded-xl border-1 border-sky-200 
+                          md:px-24 py-6 px-20 rounded-xl border-1 border-sky-200 
                           space-y-8"
           >
             <h2 className="text-4xl md:text-6xl font-bold">{country}</h2>
             <div className="md:flex md:justify-center md:align-middle md:space-x-16">
               <h3 className="text-3xl md:text-4xl mb-2 font-semibold">
-                <span className="font-light">Capital</span> <br />
+                <span className="font-light text-sky-600">Capital</span> <br />
                 {countryData.capital}
               </h3>
               <h3 className="text-3xl md:text-4xl mb-2 font-semibold">
-                <span className="font-light">Population</span> <br />
+                <span className="font-light text-sky-600">Population</span>{" "}
+                <br />
                 {countryData.population}
               </h3>
               <h3 className="text-3xl md:text-4xl font-semibold mb-2">
-                <span className="font-light">Region</span> <br />{" "}
+                <span className="font-light text-sky-600">Region</span> <br />{" "}
                 {countryData.region}
               </h3>
             </div>
+            <h5 className="text-lg">
+              <a
+                href={wikiVoyageURL}
+                className="hover:underline"
+                target="_blank"
+              >
+                Wikivoyage
+              </a>
+            </h5>
           </div>
         </div>
       </div>
