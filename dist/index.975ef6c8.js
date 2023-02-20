@@ -27331,7 +27331,6 @@ function Home() {
         if (country !== countryData.name.common && photoLoaded === false) isSearching = true;
         else isSearching = false;
     }
-    console.log(photoDetails);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27347,7 +27346,7 @@ function Home() {
                                     children: "Welcome"
                                 }, void 0, false, {
                                     fileName: "src/Home.js",
-                                    lineNumber: 138,
+                                    lineNumber: 136,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
@@ -27355,11 +27354,11 @@ function Home() {
                                     children: [
                                         "to ",
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                            className: "text-blue-500",
+                                            className: "text-blue-400",
                                             children: "World"
                                         }, void 0, false, {
                                             fileName: "src/Home.js",
-                                            lineNumber: 140,
+                                            lineNumber: 138,
                                             columnNumber: 18
                                         }, this),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -27367,13 +27366,13 @@ function Home() {
                                             children: "Info"
                                         }, void 0, false, {
                                             fileName: "src/Home.js",
-                                            lineNumber: 141,
+                                            lineNumber: 139,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/Home.js",
-                                    lineNumber: 139,
+                                    lineNumber: 137,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
@@ -27382,14 +27381,14 @@ function Home() {
                                         "The world is vast and ready to be explored. ",
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                             fileName: "src/Home.js",
-                                            lineNumber: 144,
+                                            lineNumber: 142,
                                             columnNumber: 59
                                         }, this),
                                         " Where will you go?"
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/Home.js",
-                                    lineNumber: 143,
+                                    lineNumber: 141,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27399,18 +27398,18 @@ function Home() {
                                         children: "Explore Now"
                                     }, void 0, false, {
                                         fileName: "src/Home.js",
-                                        lineNumber: 148,
+                                        lineNumber: 146,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "src/Home.js",
-                                    lineNumber: 147,
+                                    lineNumber: 145,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/Home.js",
-                            lineNumber: 137,
+                            lineNumber: 135,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27421,23 +27420,23 @@ function Home() {
                                 src: "https://images.unsplash.com/photo-1673901736622-c3f06b08511f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2074&q=80"
                             }, void 0, false, {
                                 fileName: "src/Home.js",
-                                lineNumber: 152,
+                                lineNumber: 150,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "src/Home.js",
-                            lineNumber: 151,
+                            lineNumber: 149,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/Home.js",
-                    lineNumber: 136,
+                    lineNumber: 134,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "src/Home.js",
-                lineNumber: 135,
+                lineNumber: 133,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27450,7 +27449,7 @@ function Home() {
                                 children: "Explore"
                             }, void 0, false, {
                                 fileName: "src/Home.js",
-                                lineNumber: 162,
+                                lineNumber: 160,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
@@ -27458,25 +27457,32 @@ function Home() {
                                 children: "Disclaimer: due to Unsplash API limits, search queries are restricted."
                             }, void 0, false, {
                                 fileName: "src/Home.js",
-                                lineNumber: 163,
+                                lineNumber: 161,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                 className: "flex justify-center align-middle mb-4",
-                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactSelectDefault.default), {
-                                    options: acceptedCountries,
-                                    onChange: (e)=>setCountrySearch(e.value),
-                                    onKeyDown: searchOnEnter,
-                                    className: "text-black w-1/2",
-                                    isSearchable: false
+                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                    htmlFor: "country",
+                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactSelectDefault.default), {
+                                        options: acceptedCountries,
+                                        onChange: (e)=>setCountrySearch(e.value),
+                                        onKeyDown: searchOnEnter,
+                                        className: "text-gray-900",
+                                        isSearchable: false
+                                    }, void 0, false, {
+                                        fileName: "src/Home.js",
+                                        lineNumber: 167,
+                                        columnNumber: 15
+                                    }, this)
                                 }, void 0, false, {
                                     fileName: "src/Home.js",
-                                    lineNumber: 168,
+                                    lineNumber: 166,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "src/Home.js",
-                                lineNumber: 167,
+                                lineNumber: 165,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27500,7 +27506,7 @@ function Home() {
                         ]
                     }, void 0, true, {
                         fileName: "src/Home.js",
-                        lineNumber: 161,
+                        lineNumber: 159,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
@@ -27666,7 +27672,7 @@ function Home() {
                                                     lineNumber: 239,
                                                     columnNumber: 19
                                                 }, this),
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h5", {
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                                     className: "text-lg",
                                                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
                                                         href: wikiVoyageURL,
@@ -27701,13 +27707,13 @@ function Home() {
                 ]
             }, void 0, true, {
                 fileName: "src/Home.js",
-                lineNumber: 160,
+                lineNumber: 158,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/Home.js",
-        lineNumber: 134,
+        lineNumber: 132,
         columnNumber: 5
     }, this);
 }

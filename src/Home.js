@@ -128,8 +128,6 @@ export function Home() {
     }
   }
 
-  console.log(photoDetails);
-
   return (
     <div>
       <div className="text-center text-white bg-gray-700 py-4 mb-6">
@@ -137,7 +135,7 @@ export function Home() {
           <div className="">
             <h1 className="text-6xl md:text-8xl mt-4 font-bold">Welcome</h1>
             <h2 className="text-4xl md:text-6xl font-semibold mb-6">
-              to <span className="text-blue-500">World</span>
+              to <span className="text-blue-400">World</span>
               <span className="text-lime-500">Info</span>
             </h2>
             <h3 className="text-xl md:text-2xl font-semibold mb-4">
@@ -165,13 +163,15 @@ export function Home() {
             restricted.
           </h3>
           <div className="flex justify-center align-middle mb-4">
-            <Select
-              options={acceptedCountries}
-              onChange={(e) => setCountrySearch(e.value)}
-              onKeyDown={searchOnEnter}
-              className="text-black w-1/2"
-              isSearchable={false}
-            />
+            <label htmlFor="country">
+              <Select
+                options={acceptedCountries}
+                onChange={(e) => setCountrySearch(e.value)}
+                onKeyDown={searchOnEnter}
+                className="text-gray-900"
+                isSearchable={false}
+              />
+            </label>
           </div>
 
           <button
@@ -247,7 +247,7 @@ export function Home() {
                     </a>{" "}
                     on Unsplash
                   </p>
-                  <h5 className="text-lg">
+                  <p className="text-lg">
                     <a
                       href={wikiVoyageURL}
                       className="hover:underline"
@@ -255,7 +255,7 @@ export function Home() {
                     >
                       Wikivoyage
                     </a>
-                  </h5>
+                  </p>
                 </>
               )}
             </div>
